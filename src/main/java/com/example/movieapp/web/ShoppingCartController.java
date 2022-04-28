@@ -19,7 +19,7 @@ public class ShoppingCartController {
 
     private final ShoppingCartService shoppingCartService;
 
-    @Value("pk_test_51J5tsQEyhuPvt6izDuHw4bdkk7tGOVzZeZ1XOfbBHEvE2fRqwbKfpOY8TM73NQeo5KBm8Qf3CrJew68JY77tLpeK00DN1VZz2k")
+    @Value("STRIPE_PUBLIC_KEY")
     private String stripePublicKey;
 
 

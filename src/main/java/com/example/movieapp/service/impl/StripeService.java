@@ -18,7 +18,7 @@ import java.util.Map;
 @Service
 public class StripeService {
 
-    @Value("sk_test_51J5tsQEyhuPvt6izxqhnGwJenOrF300VPxWQE7ttynfz21zPQD3jjqQfr1TfSJzFy6njp4RQUvf1biULXfkTY5si007BBDl1aE")
+    @Value("STRIPE_SECRET_KEY")
     private String secretKey;
 
     @PostConstruct
