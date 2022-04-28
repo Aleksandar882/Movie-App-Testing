@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<head>
+    <title>MovieNight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>Result</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+
+
+        .color1-btn{
+            background-color: #ff5e14!important;
+            color: #f1f1f1!important;
+
+        }
+
+        .color1-btn:hover{
+            color: #ff5e14!important;
+            background-color: rgba(0, 0, 0, 0)!important;;
+            border: 1px solid #f1f1f1!important;;
+        }
+
+        .custom-height{
+            padding-top: 25vh;
+        }
+    </style>
+</head>
+<body>
+<div class="custom-height">
+<h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
+<div th:unless='${error}'>
+    <h3 class="text-center" style='color: green;'>Payment Successful!</h3>
+<!--    <div>Id.: <span th:text='${id}' /></div>-->
+<!--    <div>Status: <span th:text='${status}' /></div>-->
+<!--    <div>Charge id.: <span th:text='${chargeId}' /></div>-->
+<!--    <div>Balance transaction id.: <span th:text='${balance_transaction}' /></div>-->
+</div>
+
+<div class="container text-light text-center">
+    <h1 >Thank You For Shopping With Us! </h1>
+    <p class="display-6">Have a nice MovieNight!</p>
+</div>
+<div class="text-center py-5">
+    <a class="btn color1-btn" href='/movies'>Browse Some More Movies!</a>
+</div>
+</div>
+</body>
+</html>

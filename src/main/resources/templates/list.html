@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>MovieNight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <style>
+    #hero{
+
+      height: 100vh;
+      background-image: url("https://repository-images.githubusercontent.com/486570848/fb0e3d6c-977d-4bbb-8dd0-517c0f0ed979");
+      background-color: #2e2e2e!important;
+      background-size: cover;
+      background-position: center;
+      background-color: #2e2e2e!important;
+    }
+
+    .bg-test{
+      background-color: #2e2e2e!important;
+
+      height: 100vh;
+
+    }
+
+    hr:not([size]) {
+      height: 1px;
+    }
+
+
+
+
+
+    .section-divider{
+      padding: 1rem 0;
+      background-color: #f2f2f2f2;
+
+    }
+
+    #html{
+      margin: 0px!important;
+
+    }
+
+    .color1{
+      color: #ff5e14!important;
+    }
+
+    .margin-fix{
+      margin-bottom: 0px!important;
+    }
+
+    .color2{
+      background-color: #2e2e2e;
+    }
+
+    .color3{
+      color: #878787;
+    }
+
+    .size{
+      font-size: 25rem!important;
+    }
+
+    .custom-font{
+      font-size:5rem!important;
+      font-weight: 400!important;
+    }
+
+    .margin-fix{
+      padding-top: 15vh;
+    }
+
+    .color1-btn{
+      background-color: #ff5e14!important;
+      color: #f1f1f1!important;
+
+    }
+
+    .color1-btn:hover{
+      color: #ff5e14!important;
+      background-color: rgba(0, 0, 0, 0)!important;;
+      border: 1px solid #f1f1f1!important;;
+    }
+
+    .color2-btn{
+      background-color: #ff5e14!important;
+      color: #f1f1f1!important;
+    }
+
+    .color2-btn:hover{
+      color: #777777!important;
+      background-color: rgba(0, 0, 0, 0)!important;;
+      border: 1px solid #ff5e14!important;;
+    }
+
+    .themargin {
+      margin-left: auto!important;
+    }
+
+    .custom-hr{
+      width: 100%;
+      border-color: grey;
+    }
+
+    .border-test{
+      border: 3px solid red;
+    }
+
+    .bg-dark {
+      background-color: #212529!important;
+    }
+
+    .custom-inline{
+      display: inline!important;
+    }
+
+
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand color1" href="/movies "><img src="https://repository-images.githubusercontent.com/486567427/520c14c9-772e-4dd8-ba02-d1cb27c60415" height="50px" width="80px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav themargin">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/movies">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shopping-cart">Shopping Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/map">Map</a>
+        </li>
+        <li class="nav-item">
+          <a href="/movies/add" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Add</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <li>
+    <span class="text-light">Welcome, <span  sec:authentication="name"> Username</span></span>
+  </li>
+</nav>
+
+
+<section id="hero">
+  <div class="text-center">
+    <div class="margin-fix">
+      <h1 class="text-light custom-font ">GET THE LATEST MOVIES ONLINE</h1>
+      <p class="text-light container lead py-5"> At MovieNight we strive to deliver the best customer experice as possible. We aim to deliver the best and lates moveis at the best prices online.
+        We offer a range of genres such as: Action. Drama, Thriller, Horror etc. We aim to be the world’s biggest site for entertainment, and we’re always looking to help you find your next favorite story.
+      </p>
+      <p class="lead text-light">We Hope You Enjoy Your Stay!</p>
+      <a class="btn color1-btn" href="#scrollto">View Latest Offers</a>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="section-divider shadow"> </div>
+
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+
+
+      <div id="scrollto" class="col-lg-4 mt-5" th:each="movie: ${movies}">
+        <div class="card text-center">
+          <img class="card-img-top" th:src="@{${movie.imageUrl}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title" th:text="${movie.name}"></h5>
+            <hr class="custom-hr">
+            <span>Genre:</span>
+            <span class="card-text" th:text="${movie.movieGenre.name}"></span>
+            <hr class="custom-hr">
+            <p class="card-text" th:text="${movie.description}"></p>
+            <hr class="custom-hr">
+            <span>Price:</span>
+            <p class="card-text" th:text="${movie.price} + '€'"></p>
+            <hr class="custom-hr">
+            <span>Actors:</span>
+            <p class="card-text"  th:each="actor: ${movie.actors}" th:text="${actor.name}"></p>
+            <hr class="custom-hr">
+
+            <!-- ForumUsersController.delete (Only ADMIN can see this element)-->
+            <form class="custom-inline" method="POST" th:action="@{'/movies/{id}/delete' (id=${movie.id})}" sec:authorize="hasRole('ROLE_ADMIN')">
+              <button type="submit" class="btn color2-btn">Delete</button>
+            </form>
+            <!-- ForumUsersController.showEdit (Only ADMIN can see this element)-->
+            <a th:href="@{'/movies/{id}/edit' (id=${movie.id})}"  class="btn color2-btn" sec:authorize="hasRole('ROLE_ADMIN')">Edit</a>
+            <form class="custom-inline" th:action="@{'/shopping-cart/add-movie/{id}' (id=${movie.getId()})}"
+                  th:method="POST"
+                  sec:authorize="isAuthenticated()">
+              <button type="submit"
+                      class="btn color2-btn">
+                <i class="fa fa-trash">Add movie to cart</i>
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+<footer class=" py-5 bg-dark text-light">
+  <div class="container">
+    <div class="row  ">
+
+      <div class="col-lg-4 text-center">
+        <h1> <i class="bi bi-geo-alt-fill color1"></i> Location:</h1>
+        <span class="text-secondary">Vidoe Smilevski Bato Skopje 1000</span>
+      </div>
+      <div class="col-lg-4 text-center">
+        <h1> <i class="bi bi-telephone color1"></i> Phone:</h1>
+        <span class="text-secondary">078 525 212</span>
+      </div>
+      <div class="col-lg-4 text-center">
+        <h1> <i class="bi bi-envelope color1 "></i> Contact:</h1>
+        <span class="text-secondary">movienight@movie.com</span>
+      </div>
+    <hr class="custom-hr">
+
+      <div class="col-12 col-md">
+      </div>
+      <div class="col-6 col-md">
+
+        <ul class="list-unstyled text-small">
+          <li><a class="text-light" href="/map">Map</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md text-end">
+
+        <ul class="list-unstyled text-small">
+          <li><a class="text-light" href="/shopping-cart">Shopping Card</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+
+        <ul class="list-unstyled text-small">
+          <li><a class="text-light" href="/login">Login</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md text-end">
+
+        <ul class="list-unstyled text-small">
+          <li><a class="text-light" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="color2">
+  <div class="container">
+    <p class="margin-fix color3 py-1">Copyright &copy; 2020-2022 All rights reserved.</p>
+  </div>
+</div>
+
+
+
+</body>
+</html>

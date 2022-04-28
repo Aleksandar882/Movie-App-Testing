@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+    <title>MovieNight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <style>
+        #map{
+            width: 1745px;
+            height: 820px;
+        }
+
+
+        .color1{
+            color: #ff5e14!important;
+        }
+
+
+
+
+
+        .section-divider{
+            padding: 1rem 0;
+            background-color: #2e2e2e;
+
+        }
+
+        #html{
+            margin: 0px!important;
+
+        }
+
+        .color1{
+            color: #ff5e14!important;
+        }
+
+        .margin-fix{
+            margin-bottom: 0px!important;
+        }
+
+        .color2{
+            background-color: #2e2e2e;
+        }
+
+        .color3{
+            color: #878787;
+        }
+
+        .size{
+            font-size: 25rem!important;
+        }
+
+        .custom-font{
+            font-size:5rem!important;
+            font-weight: 400!important;
+        }
+
+        .margin-fix{
+            padding-top: 15vh;
+        }
+
+        .color1-btn{
+            background-color: #ff5e14!important;
+            color: #f1f1f1!important;
+
+        }
+
+        .color1-btn:hover{
+            color: #ff5e14!important;
+            background-color: rgba(0, 0, 0, 0)!important;;
+            border: 1px solid #f1f1f1!important;;
+        }
+
+        .color2-btn{
+            background-color: #ff5e14!important;
+            color: #f1f1f1!important;
+        }
+
+        .color2-btn:hover{
+            color: #777777!important;
+            background-color: rgba(0, 0, 0, 0)!important;;
+            border: 1px solid #ff5e14!important;;
+        }
+
+        .themargin {
+            margin-left: auto!important;
+        }
+
+        .custom-hr{
+            width: 100%;
+            border-color: grey;
+        }
+
+        .border-test{
+            border: 3px solid red;
+        }
+
+        .bg-dark {
+            background-color: #212529!important;
+        }
+
+        .custom-inline{
+            display: inline!important;
+        }
+
+        body{
+            background-color: #434343!important;
+        }
+        .width1{
+            width: 27rem;
+            background: #f3f3f3;
+            border-radius: 7px;
+            padding: 1rem;
+            margin-top: 15vh;
+        }
+
+        .color5{
+            background-color: #4267B2!important;
+            color: #f1f1f1!important;
+        }
+
+        .color5:hover{
+            color: #4267B2!important;
+            background-color: #f1f1f1!important;
+            border: 1px solid #4267B2;
+            cursor:pointer;
+        }
+
+        .color6-btn{
+            color: #ff5e14!important;
+            background-color: #f1f1f1!important;
+            border: 1px solid #ff5e14;
+        }
+
+        .color6-btn:hover{
+            background-color: #ff5e14!important;
+            color: #f1f1f1!important;
+            border: 1px solid #ff5e14;
+        }
+
+    </style>
+    <title>Map</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand color1" href="/movies "><img src="https://repository-images.githubusercontent.com/486567427/520c14c9-772e-4dd8-ba02-d1cb27c60415" height="50px" width="80px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav themargin">
+                <li class="nav-item">
+                    <a class="nav-link "  href="/movies">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/shopping-cart">Shopping Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/map">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/movies/add" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <li>
+        <span class="text-light">Welcome, <span  sec:authentication="name"> Username</span></span>
+    </li>
+</nav>
+
+
+<div id="map">
+
+</div>
+
+<script>
+    var map = L.map('map').setView([41.98093,21.47276], 18);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([41.98121,21.47270]).addTo(map)
+    .bindPopup('We are Here!')
+    .openPopup();
+
+</script>
+
+
+
+
+</body>
+</html>

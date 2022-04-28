@@ -1,0 +1,208 @@
+<html>
+<head>
+    <title>MovieNight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+<style>
+
+    hr:not([size]) {
+        height: 1px;
+    }
+
+    .section-divider{
+        padding: 1rem 0;
+        background-color: #2e2e2e;
+
+    }
+
+    #html{
+        margin: 0px!important;
+
+    }
+
+    .color1{
+        color: #ff5e14!important;
+    }
+
+    .margin-fix{
+        margin-bottom: 0px!important;
+    }
+
+    .color2{
+        background-color: #2e2e2e;
+    }
+
+    .color3{
+        color: #878787;
+    }
+
+    .size{
+        font-size: 25rem!important;
+    }
+
+    .custom-font{
+        font-size:5rem!important;
+        font-weight: 400!important;
+    }
+
+    .margin-fix{
+        padding-top: 15vh;
+    }
+
+    .color1-btn{
+        background-color: #ff5e14!important;
+        color: #f1f1f1!important;
+
+    }
+
+    .color1-btn:hover{
+        color: #ff5e14!important;
+        background-color: rgba(0, 0, 0, 0)!important;;
+        border: 1px solid #f1f1f1!important;;
+    }
+
+    .color2-btn{
+        background-color: #ff5e14!important;
+        color: #f1f1f1!important;
+    }
+
+    .color2-btn:hover{
+        color: #777777!important;
+        background-color: rgba(0, 0, 0, 0)!important;;
+        border: 1px solid #ff5e14!important;;
+    }
+
+    .themargin {
+        margin-left: auto!important;
+    }
+
+    .custom-hr{
+        width: 100%;
+        border-color: grey;
+    }
+
+    .border-test{
+        border: 3px solid red;
+    }
+
+    .bg-dark {
+        background-color: #212529!important;
+    }
+
+    .custom-inline{
+        display: inline!important;
+    }
+
+    body{
+        background-color: #434343!important;
+    }
+    .width1{
+        width: 27rem;
+        background: #f3f3f3;
+        border-radius: 7px;
+        padding: 1rem;
+        margin-top: 25vh;
+    }
+
+    .color5{
+        background-color: #4267B2!important;
+        color: #f1f1f1!important;
+    }
+
+    .color5:hover{
+       color: #4267B2!important;
+        background-color: #f1f1f1!important;
+        border: 1px solid #4267B2;
+        cursor:pointer;
+    }
+
+    /*@media only screen and (max-width: 768px) {*/
+    /*  button{*/
+    /*      display: block!important;*/
+    /*  }*/
+    /*}*/
+
+</style>
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand color1" href="/movies "><img src="https://repository-images.githubusercontent.com/486567427/520c14c9-772e-4dd8-ba02-d1cb27c60415" height="50px" width="80px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav themargin">
+                <li class="nav-item">
+                    <a class="nav-link "  href="/movies">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/shopping-cart">Shopping Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/map">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/movies/add" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active"   aria-current="page"href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+
+
+
+<div  xmlns:th="http://www.thymeleaf.org">
+    <div class="d-flex text-center container justify-content-center">
+        <div class="width1">
+
+    <form class="form-signin custom-inline" method="post" action="/login">
+        <h2 class="form-signin-heading align-self-top">Sign in</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
+                   autofocus="">
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                   required="">
+        </p>
+
+        <div th:text="${param.error}" class="text-danger"></div>
+
+        <button id="submit" class="btn  color2-btn" type="submit">Sign in</button>
+    </form>
+    <a href="/register" class="btn color2-btn">Register here</a>
+    <a th:href="@{/oauth2/authorization/facebook}" class="btn color5">Login with Facebook</a>
+</div>
+</div>
+</div>
+
+
+
+<footer>
+<div class="color2 fixed-bottom ">
+    <div class="container">
+        <p class="margin-fix color3 py-1">Copyright &copy; 2020-2022 All rights reserved.</p>
+    </div>
+</div>
+</footer>
+</body>
+</html>
